@@ -1,0 +1,5 @@
+class Solution:
+    def replaceSpace(self, s: str) -> str:
+        a=s.split(' ')
+        rs='%20'.join(a)
+        return rs
