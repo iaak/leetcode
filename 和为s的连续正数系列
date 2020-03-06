@@ -1,0 +1,23 @@
+class Solution:
+    def findContinuousSequence(self, target: int):
+        n = int(target / 2)
+        sum = 0
+        result = []
+        tem = []
+        j = 0
+        for i in range(n):
+            j = i + 1
+            while sum < target:
+                sum += j
+                tem.append(j)
+                j += 1
+            if sum == target:
+                result.append(tem[:])
+                tem.clear()
+                sum=0
+            elif sum > target:
+                tem.clear()
+                sum=0
+        return result
+            
+
