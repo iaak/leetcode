@@ -1,0 +1,8 @@
+class Solution:
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        num=[float('inf')]*(amount+1)
+        num[0]=0
+        for coin in coins:
+            for x in range(coin,amount+1):
+                num[x]=min(num[x],num[x-coin]+1)
+        return num[amount] if num[amount] != float('inf') else -1
