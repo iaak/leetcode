@@ -1,0 +1,16 @@
+class CQueue:
+
+    def __init__(self):
+        self.queue=[]
+
+
+    def appendTail(self, value: int) -> None:
+        self.queue.append(value)
+
+
+    def deleteHead(self) -> int:
+        if self.queue:
+            n=self.queue.pop(0)
+            return n
+        else:
+            return -1
