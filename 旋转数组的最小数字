@@ -1,0 +1,13 @@
+class Solution:
+    def minArray(self, numbers: List[int]) -> int:
+        i=0
+        j=len(numbers)-1
+        while i!=j:
+            k=(i+j)//2
+            if numbers[k]>numbers[j]:
+                i=k+1
+            elif numbers[k]<numbers[j]:
+                j=k
+            else:
+                j-=1
+        return numbers[i]
