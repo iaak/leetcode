@@ -1,0 +1,26 @@
+class Solution:
+    def compressString(self, S: str) -> str:
+        if not S:
+            return ''
+        m=len(S)
+        cnt=1
+        new=[]
+        new.append(S[0])
+        tmp=S[0]
+        for i in range(1,m):
+            if S[i]!=tmp:
+                tmp=S[i]
+                new.append(cnt)
+                new.append(tmp)
+                cnt=1
+            else:
+                cnt+=1
+        new.append(cnt)
+        news=[str(x) for x in new]
+        news=''.join(news)
+        n=len(news)
+        k=len(S)
+        if len(news)<len(S):
+            return news
+        else:
+            return S
