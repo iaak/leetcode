@@ -1,0 +1,18 @@
+class Solution:
+    def longestPalindrome(self, s: str) -> int:
+        dic={}
+        cnt=0
+        bonus=0
+        for lett in s:
+            if lett not in dic:
+                dic[lett]=1
+            else: dic[lett]+=1
+        while dic:
+            k,v=dic.popitem()
+            if v>=1:
+                if v%2:
+                    cnt+=(v-1)
+                    bonus=1
+                else:
+                    cnt+=v
+        return cnt+bonus
