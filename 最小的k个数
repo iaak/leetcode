@@ -1,0 +1,7 @@
+class Solution:
+    def getLeastNumbers(self, arr: List[int], k: int) -> List[int]:
+        arr.sort()
+        rsu=[]
+        for i in range(k):
+            rsu.append(arr[i])
+        return rsu
