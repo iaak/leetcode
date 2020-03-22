@@ -1,0 +1,15 @@
+class Solution:
+    def minIncrementForUnique(self, A: List[int]) -> int:
+        m=80000
+        re=[0]*m
+        cnt,taken=0,0
+        for i in A:
+            re[i]+=1
+        for j in range(m):
+            if re[j]>=2:
+                taken+=re[j]-1
+                cnt-=j*(re[j]-1)
+            if taken>0 and re[j]==0:
+                taken-=1
+                cnt+=j
+        return cnt
