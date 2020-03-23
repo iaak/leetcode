@@ -1,0 +1,14 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def isSubStructure(self, A: TreeNode, B: TreeNode) -> bool:
+        def recur(p,s):
+            if not s: return True
+            if not p or p.val!=s.val: return False
+            return recur(p.left,s.left) and recur(p.right,s.right)
+        return recur(A,B) or self.isSubStructure(A.left,B) or self.isSubStructure(A.right,B) if A and B else False
