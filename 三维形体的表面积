@@ -1,0 +1,28 @@
+class Solution:
+    def surfaceArea(self, grid: List[List[int]]) -> int:
+        cnt=0
+        if not grid:
+            return 0
+        m=len(grid)
+        n=len(grid[0])
+        for i in range(m):
+            for j in range(n):
+                if grid[i][j]:
+                    cnt+=6*grid[i][j]-2*(grid[i][j]-1)
+                    if 0<=i-1<m and grid[i-1][j]:
+                        if grid[i-1][j]>=grid[i][j]:
+                            cnt-=grid[i][j]
+                        else: cnt-=grid[i-1][j]
+                    if 0<=j+1<n and grid[i][j+1]:
+                        if grid[i][j+1]>=grid[i][j]:
+                            cnt-=grid[i][j]
+                        else: cnt-=grid[i][j+1]
+                    if 0<=i+1<m and grid[i+1][j]:
+                        if grid[i+1][j]>=grid[i][j]:
+                            cnt-=grid[i][j]
+                        else: cnt-=grid[i+1][j]
+                    if 0<=j-1<n and grid[i][j-1]:
+                        if grid[i][j-1]>=grid[i][j]:
+                            cnt-=grid[i][j]
+                        else: cnt-=grid[i][j-1]
+        return cnt
