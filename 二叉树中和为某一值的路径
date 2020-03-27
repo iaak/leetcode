@@ -1,0 +1,23 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def pathSum(self, root: TreeNode, sum: int) -> List[List[int]]:
+        res,path=[],[]
+        def cal(tr,cnt):
+            if not tr:
+                return   
+            cnt-=tr.val
+            path.append(tr.val)
+            if cnt==0 and not tr.left and not tr.right:
+                res.append(list(path))
+            cal(tr.left,cnt)
+            cal(tr.right,cnt)
+            path.pop()
+        
+        cal(root,sum)
+        return res
