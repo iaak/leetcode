@@ -1,0 +1,29 @@
+class Solution:
+    def hasGroupsSizeX(self, deck: List[int]) -> bool:
+        def gcd(i,j):
+            m=max(i,j)
+            n=min(i,j)
+            while m%n:
+                m,n=n,m%n
+            return n
+        if not deck:
+            return False
+        dic={}
+        b=[]
+        for i in deck:
+            if i not in dic:
+                dic[i]=1
+            else:
+                dic[i]+=1
+        a=list(dic.values())
+        m=min(a)
+        if m<2:return False
+        for i in a:
+            b.append(gcd(i,m))
+        n=min(b)
+        if n<2:return False
+        for i in b:
+            if i%n:
+                return False
+        return True
+                
