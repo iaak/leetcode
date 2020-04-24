@@ -1,0 +1,8 @@
+class Solution:
+    def firstUniqChar(self, s: str) -> str:
+        if not s:
+            return ' '
+        for i in s:
+            if s.count(i)==1:
+                return i
+        return ' '
